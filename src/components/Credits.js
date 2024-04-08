@@ -16,20 +16,25 @@ const NewCreditForm = ({addCredit}) => {
     setNewCreditDesc(e.target.value);
   }
   const handleValueChange = (e) => {
-    setNewCreditValue(e.target.value);
+    // Validate input is a number
+    if(!isNaN(parseFloat(e.target.value))){
+      setNewCreditValue(e.target.value);
+    }
   }
 
   // Handle Added Credit. Creates object and then passes it to AddCredit
   const handleAddCredit = () => {
-    const newCredit = {
-      description: newCreditDesc,
-      amount: parseFloat(newCreditValue),
-      date: new Date().toISOString().slice(0,10),
+    if(!isNaN(parseFloat(newCreditValue))){
+      const newCredit = {
+        description: newCreditDesc,
+        amount: parseFloat(newCreditValue),
+        date: new Date().toISOString().slice(0,10),
+      }
+      addCredit(newCredit);
+      // clear input fields
+      setNewCreditDesc('');
+      setNewCreditValue('');
     }
-    addCredit(newCredit);
-    // clear input fields
-    setNewCreditDesc('');
-    setNewCreditValue('');
   };
 
   // Credit Input Form
