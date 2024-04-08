@@ -35,6 +35,18 @@ class App extends Component {
     this.setState({currentUser: newUser})
   }
 
+  // Add new Credit to list, update account balance
+  addCredit = (newCredit) => {
+    const updatedCreditList = [...this.state.creditList, newCredit];
+    const updatedBalance = this.state.accountBalance + newCredit.amount;
+
+    this.setState({
+      creditList: updatedCreditList,
+      accountBalance: updatedBalance,
+    });
+  };
+
+
   // Create Routes and React elements to be rendered using React components
   render() {  
     // Create React elements and pass input props to components
@@ -43,7 +55,7 @@ class App extends Component {
       <UserProfile userName={this.state.currentUser.userName} memberSince={this.state.currentUser.memberSince} />
     )
     const LogInComponent = () => (<LogIn user={this.state.currentUser} mockLogIn={this.mockLogIn} />)
-    const CreditsComponent = () => (<Credits credits={this.state.creditList} />) 
+    const CreditsComponent = () => (<Credits credits={this.state.creditList} addCredit={this.addCredit} />) 
     const DebitsComponent = () => (<Debits debits={this.state.debitList} />) 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
