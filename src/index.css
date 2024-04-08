@@ -15,22 +15,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input, button {
+	margin: 5px;
+}
 a {
   text-decoration: none;
 }
 a:visited{
   color: inherit;
 }
+.content {
+  background-color: #06141B;
+  padding: 100px 200px;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+}
+
 
 /* HOMEPAGE CSS */
-.Homepage {
+.Homepage, .credits-page, .debits-page {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Homepage::before {
+.Homepage::before, .credits-page::before, .debits-page::before {
   content: "";
   background-image: url('https://picsum.photos/200/200');
   background-size: cover;
@@ -43,13 +54,6 @@ a:visited{
   filter: blur(10px);
   z-index: -1;
   opacity: 50%;
-}
-.content {
-  background-color: #06141B;
-  padding: 100px 200px;
-  border: 2px solid black;
-  border-radius: 16px;
-  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
 }
 .Homepage h1{
   margin-bottom: 100px;
@@ -72,18 +76,68 @@ a:visited{
 .account-balance {
   padding: 12px 36px;
   margin:  5px;
-  border: 2px solid black;
+  border: 2px solid white;
   border-radius: 16px;
   display: inline-block;
   background-color: #2a9d8f;
   color:black;
   font-weight: bold;
   letter-spacing: 1.1px;
-  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+  box-shadow: 8px 12px 8px rgba(0, 0, 0, 0.8);
 }
 
 
+/* CREDIT DEBIT PAGE STYLING */
+.input-button{
+  border: 2px solid #f4a261;
+  background-color: #e9c46a;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+}
+.input-button:hover{
+  transform: scale(1.1);
+}
+.credits-page h1{
+  letter-spacing: 3px;
+}
+.credits-page a:hover, .debits-page a:hover{
+  transform: scale(1.1);
+}
+.credits-page .content a, .debits-page .content a{
+  padding: 6px 24px;
+  margin:  5px;
+  margin-top: 15px;
+  border: 2px solid black;
+  border-radius: 16px;
+  display: inline-block;
+  background-color: #264653;
+  transition: transform 0.15s ease-in-out;
+}
+.credits-page li, .debits-page li{
+  border: 2px solid white;
+  color:black;
+  padding: 5px 16px;
+  list-style: none;
+  border-radius: 4px;
+  background-color: #2a9d8f;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+  margin-top: 8px;
+}
+.debits-page li{
+  background-color: #f4a261;
+}
+.add-debit-button{
+  padding: 0px 8px;
+  background-color:#e9c46a;
 
-input, button {
-	margin: 5px;
+}
+.credit-input, .debit-input{
+  background-color: #2a9d8f;
+  border: 2px solid #06141B;
+  padding: 6px;
+  border-radius: 6px;
+}
+.debit-input{
+  background-color: #f4a261;
 }
