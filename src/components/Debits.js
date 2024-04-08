@@ -74,6 +74,7 @@ const Debits = ({ debits, addDebit }) => {
     <div className="debits-page">
       <div className='content'>
         <h1>Debits</h1>
+        <hr></hr>
         <NewDebitForm addDebit={addDebit} />
         <DebitList debits={debits} />
         <Link to="/">Return to Home</Link>

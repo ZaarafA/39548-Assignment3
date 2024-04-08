@@ -81,6 +81,7 @@ const Credits = ({credits, addCredit}) => {
     <div className="credits-page">
       <div className='content'>
         <h1>Credits</h1>
+        <hr></hr>
         <NewCreditForm addCredit={addCredit} />
         <CreditList credits={credits} />
         <Link to="/">Return to Home</Link>
