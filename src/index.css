@@ -34,14 +34,15 @@ a:visited{
 
 
 /* HOMEPAGE CSS */
-.Homepage, .credits-page, .debits-page {
+.Homepage, .credits-page, .debits-page, .login-page, .user-profile {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Homepage::before, .credits-page::before, .debits-page::before {
+.Homepage::before, .credits-page::before, .debits-page::before, 
+.login-page::before, .user-profile:before {
   content: "";
   background-image: url('https://picsum.photos/200/200');
   background-size: cover;
@@ -104,7 +105,7 @@ a:visited{
 .credits-page a:hover, .debits-page a:hover{
   transform: scale(1.1);
 }
-.credits-page .content a, .debits-page .content a{
+.credits-page .content a, .debits-page .content a, .login-page a, .user-profile a{
   padding: 6px 24px;
   margin:  5px;
   margin-top: 15px;
