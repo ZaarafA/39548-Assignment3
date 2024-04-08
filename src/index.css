@@ -15,22 +15,33 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+input, button {
+	margin: 5px;
+}
 a {
   text-decoration: none;
 }
 a:visited{
   color: inherit;
 }
+.content {
+  background-color: #06141B;
+  padding: 100px 200px;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+}
+
 
 /* HOMEPAGE CSS */
-.Homepage {
+.Homepage, .credits-page, .debits-page {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.Homepage::before {
+.Homepage::before, .credits-page::before, .debits-page::before {
   content: "";
   background-image: url('https://picsum.photos/200/200');
   background-size: cover;
@@ -43,13 +54,6 @@ a:visited{
   filter: blur(10px);
   z-index: -1;
   opacity: 50%;
-}
-.content {
-  background-color: #06141B;
-  padding: 100px 200px;
-  border: 2px solid black;
-  border-radius: 16px;
-  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
 }
 .Homepage h1{
   margin-bottom: 100px;
@@ -83,7 +87,17 @@ a:visited{
 }
 
 
-
-input, button {
-	margin: 5px;
+/* CREDIT DEBIT PAGE STYLING */
+.input-button{
+  border: 2px solid #f4a261;
+  background-color: #e9c46a;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: transform 0.2s ease-in-out;
+}
+.input-button:hover{
+  transform: scale(1.1);
+}
+.credits-page h1{
+  letter-spacing: 3px;
 }

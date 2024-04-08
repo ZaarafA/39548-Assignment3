@@ -49,7 +49,7 @@ const NewDebitForm = ({ addDebit }) => {
         onChange={handleValueChange}
         className="debit-input"
       />
-      <button onClick={handleAddDebit} className="add-debit-button">CLICK</button>
+      <button onClick={handleAddDebit} className="add-debit-button input-button">-</button>
     </div>
   )
 }
@@ -61,7 +61,7 @@ const DebitList = ({ debits }) => (
     <ul>
       {debits.map((debit, index) => (
         <li key={index} className="debit-item">
-          Description: {debit.description}, Amount: {debit.amount.toFixed(2)}, Date: {debit.date}
+          <b>Description:</b> {debit.description}, <b>Amount:</b> {debit.amount.toFixed(2)}, <b>Date:</b> {debit.date}
         </li>
       ))}
     </ul>
@@ -71,11 +71,13 @@ const DebitList = ({ debits }) => (
 // Main Page Render
 const Debits = ({ debits, addDebit }) => {
   return (
-    <div>
-      <h1>Debits</h1>
-      <NewDebitForm addDebit={addDebit} />
-      <DebitList debits={debits} />
-      <Link to="/">Return to Home</Link>
+    <div className="debits-page">
+      <div className='content'>
+        <h1>Debits</h1>
+        <NewDebitForm addDebit={addDebit} />
+        <DebitList debits={debits} />
+        <Link to="/">Return to Home</Link>
+      </div>
     </div>
   );
 };

@@ -55,7 +55,7 @@ const NewCreditForm = ({addCredit}) => {
         onChange={handleValueChange}
         className="credit-input"
       />
-      <button onClick={handleAddCredit} className="add-credit-button">CLICK</button>
+      <button onClick={handleAddCredit} className="add-credit-button input-button">+</button>
     </div>
   )
 }
@@ -67,8 +67,8 @@ const CreditList = ({ credits }) => (
     <ul>
       {credits.map((credit, index) => (
         <li key={index} className="credit-item">
-          Description: {credit.description}, Amount:{' '}
-          {credit.amount.toFixed(2)}, Date: {credit.date}
+          <b>Description:</b> {credit.description}, <b>Amount:</b>{' '}
+          {credit.amount.toFixed(2)}, <b>Date:</b> {credit.date}
         </li>
       ))}
     </ul>
@@ -78,12 +78,13 @@ const CreditList = ({ credits }) => (
 
 const Credits = ({credits, addCredit}) => {
   return (
-    <div>
-      <h1>Credits</h1>
-      <br/>
-      <NewCreditForm addCredit={addCredit} />
-      <CreditList credits={credits} />
-      <Link to="/">Return to Home</Link>
+    <div className="credits-page">
+      <div className='content'>
+        <h1>Credits</h1>
+        <NewCreditForm addCredit={addCredit} />
+        <CreditList credits={credits} />
+        <Link to="/">Return to Home</Link>
+      </div>
     </div>
   );
 }
