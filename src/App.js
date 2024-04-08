@@ -62,6 +62,12 @@ class App extends Component {
       .then(response => response.json())
       .then(data => this.setState({ creditList: data }))
       .catch(error => console.error('Error fetching credits:', error));
+
+    // Fetch data from Debits API endpoint
+    fetch('https://johnnylaicode.github.io/api/debits.json')
+      .then(response => response.json())
+      .then(data => this.setState({ debitList: data }))
+      .catch(error => console.error('Error fetching debits:', error));
   }
 
 
