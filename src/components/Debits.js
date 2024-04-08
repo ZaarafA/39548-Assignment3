@@ -8,8 +8,8 @@ import {Link} from 'react-router-dom';
 import React, { useState } from 'react';
 
 const NewDebitForm = ({ addDebit }) => {
-  const [newDebitDescription, setNewDebitDesc] = useState('');
-  const [newDebitAmount, setNewDebitValue] = useState('');
+  const [newDebitDescr, setNewDebitDesc] = useState('');
+  const [NewDebitValue, setNewDebitValue] = useState('');
 
   // Input Event Handlers
   const handleDescChange = (e) => {
@@ -17,6 +17,18 @@ const NewDebitForm = ({ addDebit }) => {
   };
   const handleValueChange = (e) => {
     setNewDebitValue(e.target.value);
+  };
+
+  // Handle Added Debit. Creates object and then passes it to AddDebit
+  const handleAddDebit = () => {
+    const newDebit = {
+      description: newDebitDescr,
+      amount: parseFloat(NewDebitValue),
+      date: new Date().toISOString().slice(0, 10),
+    };
+    addDebit(newDebit);
+    setNewDebitDesc('');
+    setNewDebitValue('');
   };
 }
 
