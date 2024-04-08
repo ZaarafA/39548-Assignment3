@@ -9,7 +9,7 @@ import React, { useState } from 'react';
 
 const NewDebitForm = ({ addDebit }) => {
   const [newDebitDescr, setNewDebitDesc] = useState('');
-  const [NewDebitValue, setNewDebitValue] = useState('');
+  const [newDebitValue, setNewDebitValue] = useState('');
 
   // Input Event Handlers
   const handleDescChange = (e) => {
@@ -23,40 +23,45 @@ const NewDebitForm = ({ addDebit }) => {
   const handleAddDebit = () => {
     const newDebit = {
       description: newDebitDescr,
-      amount: parseFloat(NewDebitValue),
+      amount: parseFloat(newDebitValue),
       date: new Date().toISOString().slice(0, 10),
     };
     addDebit(newDebit);
     setNewDebitDesc('');
     setNewDebitValue('');
   };
+
+  // Credit Input Form
+  return(
+    <div className="new-credit-form">
+      <h2>Add New Debit</h2>
+      <input
+        type="text"
+        placeholder="Description"
+        value={newDebitDescr}
+        onChange={handleDescChange}
+        className="debit-input"
+      />
+      <input
+        type="number"
+        placeholder="Amount"
+        value={newDebitValue}
+        onChange={handleValueChange}
+        className="debit-input"
+      />
+      <button onClick={handleAddDebit} className="add-debit-button">CLICK</button>
+    </div>
+  )
 }
 
-const Debits = (props) => {
-  // Create the list of Debit items
-  let debitsView = () => {
-    const { debits } = props;
-    return debits.map((debit) => {  // Extract "id", "amount", "description" and "date" properties of each debits JSON array element
-      let date = debit.date.slice(0,10);
-      return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
-    });
-  }
-  // Render the list of Debit items and a form to input new Debit item
+const Debits = ({ debits, addDebit }) => {
   return (
     <div>
       <h1>Debits</h1>
-
-      {debitsView()}
-
-      <form onSubmit={props.addDebit}>
-        <input type="text" name="description" />
-        <input type="number" name="amount" />
-        <button type="submit">Add Debit</button>
-      </form>
-      <br/>
+      <NewDebitForm addDebit={addDebit} />
       <Link to="/">Return to Home</Link>
     </div>
   );
-}
+};
 
 export default Debits;
