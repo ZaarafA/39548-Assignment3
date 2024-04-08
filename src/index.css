@@ -51,7 +51,36 @@ a:visited{
   border-radius: 16px;
   box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
 }
-
+.Homepage h1{
+  margin-bottom: 100px;
+  letter-spacing: 3px;
+  /* color: #e9c46a; */
+  transition: transform 0.3s ease-in-out;
+}
+.Homepage h1:hover, .Homepage a:hover{
+  transform: scale(1.1);
+}
+.Homepage .content a{
+  padding: 6px 24px;
+  margin:  5px;
+  border: 2px solid black;
+  border-radius: 16px;
+  display: inline-block;
+  background-color: #264653;
+  transition: transform 0.15s ease-in-out;
+}
+.account-balance {
+  padding: 12px 36px;
+  margin:  5px;
+  border: 2px solid black;
+  border-radius: 16px;
+  display: inline-block;
+  background-color: #2a9d8f;
+  color:black;
+  font-weight: bold;
+  letter-spacing: 1.1px;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+}
 
 
 
