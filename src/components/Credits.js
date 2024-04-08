@@ -55,12 +55,29 @@ const NewCreditForm = ({addCredit}) => {
   )
 }
 
+// Display Current List of Credits
+const CreditList = ({ credits }) => (
+  <div className="credit-list">
+    <h2>Credits List</h2>
+    <ul>
+      {credits.map((credit, index) => (
+        <li key={index} className="credit-item">
+          Description: {credit.description}, Amount:{' '}
+          {credit.amount.toFixed(2)}, Date: {credit.date}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+
 const Credits = ({credits, addCredit}) => {
   return (
     <div>
       <h1>Credits</h1>
       <br/>
       <NewCreditForm addCredit={addCredit} />
+      <CreditList credits={credits} />
       <Link to="/">Return to Home</Link>
     </div>
   );
