@@ -43,22 +43,24 @@ class LogIn extends Component {
 
     // Render the login form (and call "handleSubmit" method when "Log In" button is clicked to submit form)
     return (
-      <div>
-        <h1>Login</h1>
-        
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>User Name</label>
-            <input type="text" name="userName" defaultValue={this.props.user.userName} onChange={this.handleChange} />
-          </div>
-          <div>
-            <label>Password</label>
-            <input type="password" name="password" />
-          </div>
-          <button>Log In</button>
-        </form>  
-        <br/>
-        <Link to="/">Return to Home</Link>
+      <div className="login-page">
+        <div className='content'>
+          <h1>Login</h1>
+          <hr></hr>
+          <form className='login-input' onSubmit={this.handleSubmit}>
+            <div>
+              <label>User Name</label>
+              <input type="text" name="userName" defaultValue={this.props.user.userName} onChange={this.handleChange} />
+            </div>
+            <div>
+              <label>Password</label>
+              <input type="password" name="password" />
+            </div>
+            <button>Log In</button>
+          </form>
+          <br/>
+          <Link to="/">Return to Home</Link>
+        </div>
       </div>
     );
   }
