@@ -6,12 +6,54 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+  color: #fff;
+  background-color: #06141B;
 }
 
+/* GLOBAL CSS */
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+a {
+  text-decoration: none;
+}
+a:visited{
+  color: inherit;
+}
+
+/* HOMEPAGE CSS */
+.Homepage {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Homepage::before {
+  content: "";
+  background-image: url('https://picsum.photos/200/200');
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  filter: blur(10px);
+  z-index: -1;
+  opacity: 50%;
+}
+.content {
+  background-color: #06141B;
+  padding: 100px 200px;
+  border: 2px solid black;
+  border-radius: 16px;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+}
+
+
+
 
 input, button {
 	margin: 5px;
