@@ -5,6 +5,20 @@ The Debits component contains information for Debits page view.
 Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+
+const NewDebitForm = ({ addDebit }) => {
+  const [newDebitDescription, setNewDebitDesc] = useState('');
+  const [newDebitAmount, setNewDebitValue] = useState('');
+
+  // Input Event Handlers
+  const handleDescChange = (e) => {
+    setNewDebitDesc(e.target.value);
+  };
+  const handleValueChange = (e) => {
+    setNewDebitValue(e.target.value);
+  };
+}
 
 const Debits = (props) => {
   // Create the list of Debit items
