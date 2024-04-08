@@ -31,7 +31,7 @@ const NewDebitForm = ({ addDebit }) => {
     setNewDebitValue('');
   };
 
-  // Credit Input Form
+  // Debit Input Form
   return(
     <div className="new-credit-form">
       <h2>Add New Debit</h2>
@@ -54,11 +54,27 @@ const NewDebitForm = ({ addDebit }) => {
   )
 }
 
+// Display Current List of Debits
+const DebitList = ({ debits }) => (
+  <div className="debit-list">
+    <h2>Debits List</h2>
+    <ul>
+      {debits.map((debit, index) => (
+        <li key={index} className="debit-item">
+          Description: {debit.description}, Amount: {debit.amount.toFixed(2)}, Date: {debit.date}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+// Main Page Render
 const Debits = ({ debits, addDebit }) => {
   return (
     <div>
       <h1>Debits</h1>
       <NewDebitForm addDebit={addDebit} />
+      <DebitList debits={debits} />
       <Link to="/">Return to Home</Link>
     </div>
   );
