@@ -5,32 +5,79 @@ The Debits component contains information for Debits page view.
 Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
 
-const Debits = (props) => {
-  // Create the list of Debit items
-  let debitsView = () => {
-    const { debits } = props;
-    return debits.map((debit) => {  // Extract "id", "amount", "description" and "date" properties of each debits JSON array element
-      let date = debit.date.slice(0,10);
-      return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
-    });
-  }
-  // Render the list of Debit items and a form to input new Debit item
+const NewDebitForm = ({ addDebit }) => {
+  const [newDebitDescr, setNewDebitDesc] = useState('');
+  const [newDebitValue, setNewDebitValue] = useState('');
+
+  // Input Event Handlers
+  const handleDescChange = (e) => {
+    setNewDebitDesc(e.target.value);
+  };
+  const handleValueChange = (e) => {
+    setNewDebitValue(e.target.value);
+  };
+
+  // Handle Added Debit. Creates object and then passes it to AddDebit
+  const handleAddDebit = () => {
+    const newDebit = {
+      description: newDebitDescr,
+      amount: parseFloat(newDebitValue),
+      date: new Date().toISOString().slice(0, 10),
+    };
+    addDebit(newDebit);
+    setNewDebitDesc('');
+    setNewDebitValue('');
+  };
+
+  // Debit Input Form
+  return(
+    <div className="new-credit-form">
+      <h2>Add New Debit</h2>
+      <input
+        type="text"
+        placeholder="Description"
+        value={newDebitDescr}
+        onChange={handleDescChange}
+        className="debit-input"
+      />
+      <input
+        type="number"
+        placeholder="Amount"
+        value={newDebitValue}
+        onChange={handleValueChange}
+        className="debit-input"
+      />
+      <button onClick={handleAddDebit} className="add-debit-button">CLICK</button>
+    </div>
+  )
+}
+
+// Display Current List of Debits
+const DebitList = ({ debits }) => (
+  <div className="debit-list">
+    <h2>Debits List</h2>
+    <ul>
+      {debits.map((debit, index) => (
+        <li key={index} className="debit-item">
+          Description: {debit.description}, Amount: {debit.amount.toFixed(2)}, Date: {debit.date}
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
+// Main Page Render
+const Debits = ({ debits, addDebit }) => {
   return (
     <div>
       <h1>Debits</h1>
-
-      {debitsView()}
-
-      <form onSubmit={props.addDebit}>
-        <input type="text" name="description" />
-        <input type="number" name="amount" />
-        <button type="submit">Add Debit</button>
-      </form>
-      <br/>
+      <NewDebitForm addDebit={addDebit} />
+      <DebitList debits={debits} />
       <Link to="/">Return to Home</Link>
     </div>
   );
-}
+};
 
 export default Debits;
