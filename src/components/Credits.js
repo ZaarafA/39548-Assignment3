@@ -30,18 +30,37 @@ const NewCreditForm = ({addCredit}) => {
     // clear input fields
     setNewCreditDesc('');
     setNewCreditValue('');
-  }
+  };
 
-  return{
-    
-  }
+  // Credit Input Form
+  return(
+    <div className="new-credit-form">
+      <h2>Add New Credit</h2>
+      <input
+        type="text"
+        placeholder="Description"
+        value={newCreditDesc}
+        onChange={handleDescChange}
+        className="credit-input"
+      />
+      <input
+        type="number"
+        placeholder="Amount"
+        value={newCreditValue}
+        onChange={handleValueChange}
+        className="credit-input"
+      />
+      <button onClick={handleAddCredit} className="add-credit-button">CLICK</button>
+    </div>
+  )
 }
 
-const Credits = (props) => {
+const Credits = ({credits, addCredit}) => {
   return (
     <div>
       <h1>Credits</h1>
       <br/>
+      <NewCreditForm addCredit={addCredit} />
       <Link to="/">Return to Home</Link>
     </div>
   );
