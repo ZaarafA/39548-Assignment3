@@ -1,4 +1,4 @@
-# 39548 Assignment 2 - Bank of React
+# 39548 Assignment 3 - Bank of React
 This repository is the code for Assignment 3 - Bank of React.
 | Faraaz Ali | @ZaarafA |
 |-----------|------------|
