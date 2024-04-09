@@ -18,7 +18,7 @@ class App extends Component {
   constructor() {  // Create and initialize state
     super(); 
     this.state = {
-      accountBalance: 1234567.89,
+      accountBalance: 0.00,
       creditList: [],
       debitList: [],
       currentUser: {
@@ -60,13 +60,29 @@ class App extends Component {
     // Fetch data from Credits API endpoint
     fetch('https://johnnylaicode.github.io/api/credits.json')
       .then(response => response.json())
-      .then(data => this.setState({ creditList: data }))
+      .then(data => {
+        // Calculate total credit amount
+        const totalCreditAmount = data.reduce((total, credit) => total + parseFloat(credit.amount), 0);
+        // Update state with credit list and adjust account balance
+        this.setState(prevState => ({
+          creditList: data,
+          accountBalance: prevState.accountBalance + totalCreditAmount
+        }));
+      })
       .catch(error => console.error('Error fetching credits:', error));
-
+  
     // Fetch data from Debits API endpoint
     fetch('https://johnnylaicode.github.io/api/debits.json')
       .then(response => response.json())
-      .then(data => this.setState({ debitList: data }))
+      .then(data => {
+        // Calculate total debit amount
+        const totalDebitAmount = data.reduce((total, debit) => total + parseFloat(debit.amount), 0);
+        // Update state with debit list and adjust account balance
+        this.setState(prevState => ({
+          debitList: data,
+          accountBalance: prevState.accountBalance - totalDebitAmount
+        }));
+      })
       .catch(error => console.error('Error fetching debits:', error));
   }
 
