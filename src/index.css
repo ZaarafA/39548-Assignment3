@@ -19,6 +19,7 @@ input, button {
 	margin: 5px;
 }
 a {
+  color: white;
   text-decoration: none;
 }
 a:visited{
@@ -30,6 +31,9 @@ a:visited{
   border: 2px solid black;
   border-radius: 16px;
   box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.8);
+}
+h1{
+  text-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -73,6 +77,7 @@ a:visited{
   display: inline-block;
   background-color: #264653;
   transition: transform 0.15s ease-in-out;
+  box-shadow: 4px 8px 8px rgba(0, 0, 0, 0.5);
 }
 .account-balance {
   padding: 12px 36px;
